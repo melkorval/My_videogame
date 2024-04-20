@@ -1,6 +1,7 @@
 # Simple Video Game
 
-Este es un proyecto de un videojuego simple desarrollado utilizando HTML, CSS, JavaScript y un servidor Express. El objetivo principal es aprender y practicar las tecnologías web modernas, así como la arquitectura cliente-servidor.
+Este es un proyecto de un videojuego simple desarrollado utilizando HTML, CSS, JavaScript y un servidor Express. El objetivo principal es aprender y practicar las tecnologías web modernas, así como la arquitectura cliente-servidor. El juego consiste en que un usuario selecciona un personaje y hacer la carrera con otro personaje en multijugador por una serie de rutas, donde existe elementos que te 
+dan vida o te quitan vida y debe llegar a un meta
 
 ## Características
 
