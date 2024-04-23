@@ -11,7 +11,8 @@ const mapaJuego = document.getElementById('mapaJuego')
 //definir una varible para el mapa donde se movera nuestro Personaje
 const mapa = document.getElementById('mapa') //seccionar el div donde se colocara el mapa
 
-
+let personajes = [] //crear una lista para guardar personajes cuando
+//los objetos de este sean creados
 let lienzo = mapa.getContext("2d") //creacion de un mapa 2d
 
 //creacion de clase para crear objetos de los personajes
@@ -42,4 +43,16 @@ class Personaje {
 
 //creacion de los personajes como objetos
 //los objetos se guardan en un variable let
-sylvanari = new personajes('Sylvanari', '', 3)
+sylvanari = new Personaje('Sylvanari', 'https://i.imgur.com/d2UE9mQ.png', 3)
+melian = new Personaje('Melian', 'https://i.imgur.com/qMmmw5L.png', 3)
+yelathien = new Personaje('Yelathien', 'https://i.imgur.com/oKDESH4.png', 3)
+
+//Ahora debemos inyectar los objetos a el html
+//para hacer esto primero creamos un variable donde se guarden nuestros
+//personajes y creamos un funcion para iniciar juego
+
+function iniciarJuego (){
+    //aqui ocultar la otras secciones por medio de display
+    //para que primero comienze con la primera seccion
+
+}
