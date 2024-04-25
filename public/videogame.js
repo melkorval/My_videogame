@@ -17,6 +17,8 @@ const contenedorTarjetas = document.getElementById('contenedorTarjetas')
 //variable para guardar el codigo html donde se inyectaran los personajes
 let opcionesPersonajes
 
+//variable donde se guarde la mascota seleccionada por el jugador
+let mascotaJugador
 
 let personajes = [] //crear una lista para guardar personajes cuando
 //los objetos de este sean creados
@@ -68,6 +70,10 @@ function iniciarJuego (){
     //La seccion que primero debe aparecer es la seccion
     //comenzarJuego y luego la seccion seleccionar Personaje
     //esta seccion del mapa esta guardada en la variable mapaJuego
+
+    //ocultar seccion de seleccion de personaje
+    seleccionarPersonaje.style.display = 'none'
+    //ocultar seccion de mapa de canvas
     mapaJuego.style.display = 'none'
 
     //Escuchar evento de click que indica que se iniciado el juego
@@ -96,11 +102,29 @@ function verPersonajes(){
         `   
 
     contenedorTarjetas.innerHTML += opcionesPersonajes
+    //este codigo actualiza el contenido que esta dentro del elemento
+    //html que tiene el id contenedorTarjetas esto se hace con la propiedad
+    //innerHTML para insertar contenido dentro del elemento html
 
     //seleccion de los personajes segun su id de nombre
-    sylvanari = document.getElementById('Sylvanari')
-    melian = document.getElementById('Melian')
-    yelathien  = document.getElementById('Yelathien')
+    inputsylvanari = document.getElementById('Sylvanari')
+    inputmelian = document.getElementById('Melian')
+    inputyelathien  = document.getElementById('Yelathien')
     
     })
+
+    //Ejecutar funcion para ver que personaje seleccionó el jugador cuando
+    //este haga click en el boton seleccionar
+    seleccionarPersonaje.addEventListener('click', verificarPersonaje)
+
+}
+
+//funcion para identificar que personaje selecciono el jugador
+function verificarPersonaje(){
+    //hacer condicionales para indicar que personaje fue seleccionado
+    //se debe crear un variable de las mascota que el jugador seleccionó
+    if(inputsylvanari.checked){
+        
+    }
+
 }
