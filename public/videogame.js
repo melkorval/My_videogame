@@ -5,11 +5,16 @@
 //seleccion de elementos segun su id y se guardan en un variable de tipo
 //constante
 const comenzarJuego = document.getElementById('comenzarJuego')
-const botonComienzo = document.getElementById('botonComienzo') //seccion de boton de comenzar
+const botonComienzo = document.getElementById('botonComienzo') 
+//seccion de boton de comenzar
+
 const seleccionarPersonaje = document.getElementById('seleccionarPersonaje')
+
+//seleccion de la seccion de mapa
 const mapaJuego = document.getElementById('mapaJuego')
-//definir una varible para el mapa donde se movera nuestro Personaje
-const mapa = document.getElementById('mapa') //seccionar el div donde se colocara el mapa
+//definir una variable para el mapa donde se movera nuestro Personaje
+const mapa = document.getElementById('mapa') 
+//seccionar el div donde se colocara el mapa
 
 //seleccion de div donde se colocara los personajes
 const contenedorTarjetas = document.getElementById('contenedorTarjetas')
@@ -17,8 +22,8 @@ const contenedorTarjetas = document.getElementById('contenedorTarjetas')
 //variable para guardar el codigo html donde se inyectaran los personajes
 let opcionesPersonajes
 
-//variable donde se guarde la mascota seleccionada por el jugador
-let mascotaJugador
+//variable donde se guarde el personaje seleccionado por el jugador
+let personajeJugador
 
 let personajes = [] //crear una lista para guardar personajes cuando
 //los objetos de este sean creados
@@ -124,7 +129,34 @@ function verificarPersonaje(){
     //hacer condicionales para indicar que personaje fue seleccionado
     //se debe crear un variable de las mascota que el jugador seleccionó
     if(inputsylvanari.checked){
-        
+        //mostrar en el HTML el nombre del jugador por su id en el HTML
+        seleccionarPersonaje.innerHTML = inputsylvanari.id 
+        //Guardar la personaje seleccionado por el jugador
+        personajeJugador = inputsylvanari.id
+    } else if(inputmelian.checked){
+        seleccionarPersonaje.innerHTML = inputmelian.id
+        personajeJugador = inputmelian.id 
+    } else if(inputyelathien.checked){
+        seleccionarPersonaje.innerHTML = inputyelathien
+        personajeJugador = inputyelathien.id
+    } else {
+        //en el caso que no seleccione una mascota interrumpir el 
+        //codigo
+        alert("Por favor, seleccionar personaje")
+        return //detiene el codigo
     }
 
+    //ocultar la seleccion de personajes para luego cargar el mapa
+    //canvas
+    seleccionarPersonaje.style.display = 'none'
+
+    //cargar mapa del juego
+    //seccion de mapa
+    mapaJuego.style.display = flex
+    iniciarMapa()
+
+}
+
+function iniciarMapa(){
+    //aqui cargamos el mapa en canvas
 }
