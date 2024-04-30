@@ -175,6 +175,11 @@ function iniciarMapa(){
     //rastrear el erro
     console.log(personajeJugadorObjeto, personajeJugador)
 
+    //estar actualizando el mapa en cierto intervalo de tiempo
+    intervalo = setInterval(pintarCanvas, 50) //cada 50 milisegundos
+    //ejecutar la funcion pintarCanvas es decir el mapa
+    //ahora debemos crear la funcion pintarCanvas
+
     //leer eventos cuando se presiona un tecla o no
 
 
