@@ -37,10 +37,14 @@ let personajeJugadorObjeto
 //mapa denuevo
 let intervalo
 
+//crear una variable para guardar la imagen de fondo del mapa
+let mapaBackground = new Image()
+mapaBackground.src = ''
+
 //creacion de clase para crear objetos de los personajes
 //ahora falta crear los personajes y sus fotos
 class Personaje {
-    constructor(nombre, foto, vidas, id = null){//creacion de la clase 
+    constructor(nombre, foto, vidas, fotoMapa, id = null){//creacion de la clase 
         //personaje, donde este personaje tendra un nombre, foto y  
         //un id para ser reconocido por el servidor
 
@@ -49,6 +53,25 @@ class Personaje {
         this.foto = foto
         this.vidas = vidas //al chocar con algun objeto se pierde vidas 
         this.id = id
+
+        //definicion de los parametros de posicion y
+        //velocidad del personaje
+
+        //posicion aleatoria en en el mapa
+        this.x = aleatorio(0, mapa.width - this.ancho)
+        this.y = aleatorio(0, mapa.height - this.alto)
+
+        //Definicion de la velocidad inicial
+        this.velocidadX = 0
+        this.velocidadY = 0
+
+        //tambien definimos las propiedades del mapa
+        //para el jugador en canvas
+        this.mapaFoto = new Image()
+        this.mapaFoto.src = fotoMapa
+
+
+
     }
 
     pintarPersonaje() {
@@ -194,4 +217,9 @@ function obtenerObjetoPersonaje(personajeJugador) {
             //retornar el personaje encontrado en la lista
         }
     }
+}
+
+function pintarCanvas(){
+    //definimos el movimiento de los personajes en terminos 
+    //de su posicion y velocidad
 }
