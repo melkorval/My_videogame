@@ -30,6 +30,13 @@ let personajes = [] //crear una lista para guardar personajes cuando
 
 let lienzo = mapa.getContext("2d") //creacion de un mapa 2d
 
+//variable para guardar el objeto de personaje que el usuario selecciono
+let personajeJugadorObjeto
+
+//crear un variable para indicar en cuanto tiempo se imprime el 
+//mapa denuevo
+let intervalo
+
 //creacion de clase para crear objetos de los personajes
 //ahora falta crear los personajes y sus fotos
 class Personaje {
@@ -159,4 +166,27 @@ function verificarPersonaje(){
 
 function iniciarMapa(){
     //aqui cargamos el mapa en canvas
+    //primero debemos crear un variable que guarde el objeto
+    //de personaje seleccionado esto se extraer por medio de una
+    //funcion
+    personajeJugadorObjeto = obtenerObjetoPersonaje(personajeJugador)
+
+    //ver en terminal si la variables son correctas o en caso contrarion 
+    //rastrear el erro
+    console.log(personajeJugadorObjeto, personajeJugador)
+
+    //leer eventos cuando se presiona un tecla o no
+
+
+}
+
+function obtenerObjetoPersonaje(personajeJugador) {
+    //recorrer la lista de jugadores para verificar 
+    //que personaje se selecciono
+    for(let i = 0; i < personajes.length; i ++){
+        if(personajeJugador == personajes[i].nombre){
+            return personajes[i] 
+            //retornar el personaje encontrado en la lista
+        }
+    }
 }
