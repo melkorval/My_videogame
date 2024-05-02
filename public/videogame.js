@@ -9,11 +9,16 @@ const botonComienzo = document.getElementById('botonComienzo')
 //seccion de boton de comenzar
 
 const seleccionarPersonaje = document.getElementById('seleccionarPersonaje')
+//ocultar esta opcion mientras se ejecuta iniciar juego
+seleccionarPersonaje.style.display = 'none'
 
 //seleccion de la seccion de mapa
 const mapaJuego = document.getElementById('mapaJuego')
 //definir una variable para el mapa donde se movera nuestro Personaje
-const mapa = document.getElementById('mapa') 
+//ocultar seccion de mapaJuego mientras se ejecuta la funcion de iniciarJuego
+mapaJuego.style.display = 'none'
+
+const mapa = document.getElementById('mapa')
 //seccionar el div donde se colocara el mapa
 
 //seleccion de div donde se colocara los personajes
@@ -58,8 +63,8 @@ class Personaje {
         //velocidad del personaje
 
         //posicion aleatoria en en el mapa
-        this.x = aleatorio(0, mapa.width - this.ancho)
-        this.y = aleatorio(0, mapa.height - this.alto)
+        this.x = mapa.width/3
+        this.y = 2*mapa.height/3
 
         //Definicion de la velocidad inicial
         this.velocidadX = 0
@@ -105,11 +110,6 @@ function iniciarJuego (){
     //La seccion que primero debe aparecer es la seccion
     //comenzarJuego y luego la seccion seleccionar Personaje
     //esta seccion del mapa esta guardada en la variable mapaJuego
-
-    //ocultar seccion de seleccion de personaje
-    seleccionarPersonaje.style.display = 'none'
-    //ocultar seccion de mapa de canvas
-    mapaJuego.style.display = 'none'
 
     //Escuchar evento de click que indica que se iniciado el juego
     //y se debe cargar la funcion para ver los personajes para 
@@ -243,3 +243,6 @@ function pintarCanvas(){
 
     personajeJugador.pintarPersonaje()
 }
+
+window.addEventListener('load', iniciarJuego) //iniciar juego una vez que se haya cargado todo
+//el sitio web
