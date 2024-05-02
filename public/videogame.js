@@ -39,7 +39,7 @@ let intervalo
 
 //crear una variable para guardar la imagen de fondo del mapa
 let mapaBackground = new Image()
-mapaBackground.src = ''
+mapaBackground.src = 'https://i.imgur.com/Z5o8WPC.png'
 
 //creacion de clase para crear objetos de los personajes
 //ahora falta crear los personajes y sus fotos
@@ -222,4 +222,24 @@ function obtenerObjetoPersonaje(personajeJugador) {
 function pintarCanvas(){
     //definimos el movimiento de los personajes en terminos 
     //de su posicion y velocidad
+    personajeJugadorObjeto.x = personajeJugadorObjeto.x + personajeJugadorObjeto.velocidadX
+    personajeJugadorObjeto.y = personajeJugadorObjeto.y + personajeJugadorObjeto.velocidadY
+
+    //limpia todo el contenido anterior del mapa
+    //eso se hace para que aparezca cada jugador en su 
+    //nueva posicion ya que sino se hace esto apareceran las imagenes
+    //superpuestas en cada iteracion
+    lienzo.clearRect(0, 0, mapa.width, mapa.height)
+
+    //ahora dibujamos la imagen de fondo del
+    //mapa en canvas
+    lienzo.drawImage(
+        mapaBackground, //imagen de fondo
+        0,
+        0,
+        mapa.width,
+        mapa.height
+    )
+
+    personajeJugador.pintarPersonaje()
 }
