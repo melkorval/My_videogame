@@ -10,13 +10,11 @@ const botonComienzo = document.getElementById('botonComienzo')
 
 const seleccionarPersonaje = document.getElementById('seleccionarPersonaje')
 //ocultar esta opcion mientras se ejecuta iniciar juego
-seleccionarPersonaje.style.display = 'none'
 
 //seleccion de la seccion de mapa
 const mapaJuego = document.getElementById('mapaJuego')
 //definir una variable para el mapa donde se movera nuestro Personaje
 //ocultar seccion de mapaJuego mientras se ejecuta la funcion de iniciarJuego
-mapaJuego.style.display = 'none'
 
 const mapa = document.getElementById('mapa')
 //seccionar el div donde se colocara el mapa
@@ -75,8 +73,6 @@ class Personaje {
         this.mapaFoto = new Image()
         this.mapaFoto.src = fotoMapa
 
-
-
     }
 
     pintarPersonaje() {
@@ -115,6 +111,14 @@ function iniciarJuego (){
     //y se debe cargar la funcion para ver los personajes para 
     //que luego el jugador los seleccione
 
+    // Mostrar la sección "comenzarJuego"
+    comenzarJuego.style.display = 'block'
+
+    //Ocultar seccion de seleccionar jugador
+    seleccionarPersonaje.style.display = 'none'
+
+    //escuchar el evento de click sobre el boton de 
+    //seleccionar personaje
     botonComienzo.addEventListener('click', verPersonajes)
     
 }
@@ -122,6 +126,12 @@ function iniciarJuego (){
 //en esta funcion de ejecuta cuando el jugador da click al boton 
 //comenzar y entonce se carga la pantalla donde puede ver sus personajes
 function verPersonajes(){
+    //Ocultar la sección "comenzarJuego"
+    comenzarJuego.style.display = 'none'
+
+    //mostrar la seccion de seleccionar jugador o personaje
+    seleccionarPersonaje.style.display = 'block'
+
     //aqui debemos infectar al html los personajes que se crearon
     //primero recorremos la lista de personaje y a cada personaje 
     //le damos un estructura html para que aparezca en html
@@ -129,8 +139,8 @@ function verPersonajes(){
         //Guardar el html generado en una variable para
         //luego inyectar en el html
         opcionesPersonajes =  `
-        <input type="radio" name="mascota" id=${personaje.nombre} />
-        <label class="tarjeta-de-mokepon" for=${personaje.nombre}>
+        <input type="radio" name="personaje" id=${personaje.nombre} />
+        <label class="tarjeta-de-personaje" for=${personaje.nombre}>
             <p>${personaje.nombre}</p>
             <img src=${personaje.foto} alt=${personaje.nombre}>
         </label>
@@ -151,7 +161,8 @@ function verPersonajes(){
     //Ejecutar funcion para ver que personaje seleccionó el jugador cuando
     //este haga click en el boton seleccionar
     seleccionarPersonaje.addEventListener('click', verificarPersonaje)
-
+    
+    //debe crearse un boton para reiniciar juego
 }
 
 //funcion para identificar que personaje selecciono el jugador
