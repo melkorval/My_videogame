@@ -1,0 +1,18 @@
+/*Personalizacion del mapa en canvas */
+
+#mapaJuego {
+    /*La propiedad de flex permite ordenar de forma
+    flexible los elementos en un contenedor*/
+    flex-direction: column; /*los elementos se organizan en 
+                             columna */
+    align-items: center; /*alineacion vertical de los
+                          elementos en forma centrada*/
+    justify-content: center; /*alineacion horizontal de los
+                              elementos en forma centrada*/
+}
+
+/*Colocar un borde a nuestro mapa de canvas */
+
+#mapa {
+    
+}

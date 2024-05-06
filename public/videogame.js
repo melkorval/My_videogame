@@ -8,8 +8,11 @@ const comenzarJuego = document.getElementById('comenzarJuego')
 const botonComienzo = document.getElementById('botonComienzo') 
 //seccion de boton de comenzar
 
+//selecionar seccion de Personaje
 const seleccionarPersonaje = document.getElementById('seleccionarPersonaje')
-//ocultar esta opcion mientras se ejecuta iniciar juego
+
+//seleccion de boton de personaje
+const seleccionarBoton = document.getElementById('seleccionarBoton')
 
 //seleccion de la seccion de mapa
 const mapaJuego = document.getElementById('mapaJuego')
@@ -117,6 +120,9 @@ function iniciarJuego (){
     //Ocultar seccion de seleccionar jugador
     seleccionarPersonaje.style.display = 'none'
 
+    //Ocultar seleccion de mapa
+    mapaJuego.style.display = 'none'
+    
     //escuchar el evento de click sobre el boton de 
     //seleccionar personaje
     botonComienzo.addEventListener('click', verPersonajes)
@@ -145,6 +151,8 @@ function verPersonajes(){
             <img src=${personaje.foto} alt=${personaje.nombre}>
         </label>
         `   
+        //los botones de seleccion solo estan un poco desordenados pero existen
+        //solo hay que usar css
 
     contenedorTarjetas.innerHTML += opcionesPersonajes
     //este codigo actualiza el contenido que esta dentro del elemento
@@ -160,7 +168,7 @@ function verPersonajes(){
 
     //Ejecutar funcion para ver que personaje seleccionó el jugador cuando
     //este haga click en el boton seleccionar
-    seleccionarPersonaje.addEventListener('click', verificarPersonaje)
+    seleccionarBoton.addEventListener('click', verificarPersonaje)
     
     //debe crearse un boton para reiniciar juego
 }
@@ -193,7 +201,7 @@ function verificarPersonaje(){
 
     //cargar mapa del juego
     //seccion de mapa
-    mapaJuego.style.display = flex
+    mapaJuego.style.display = 'flex'
     iniciarMapa()
 
 }
@@ -241,6 +249,7 @@ function pintarCanvas(){
     //nueva posicion ya que sino se hace esto apareceran las imagenes
     //superpuestas en cada iteracion
     lienzo.clearRect(0, 0, mapa.width, mapa.height)
+    //es importante definir el ancho y el alto del mapa
 
     //ahora dibujamos la imagen de fondo del
     //mapa en canvas
