@@ -136,7 +136,7 @@ function verPersonajes(){
     comenzarJuego.style.display = 'none'
 
     //mostrar la seccion de seleccionar jugador o personaje
-    seleccionarPersonaje.style.display = 'block'
+    seleccionarPersonaje.style.display = 'flex'
 
     //aqui debemos infectar al html los personajes que se crearon
     //primero recorremos la lista de personaje y a cada personaje 
@@ -175,6 +175,10 @@ function verPersonajes(){
 
 //funcion para identificar que personaje selecciono el jugador
 function verificarPersonaje(){
+
+    //ocultar seleccion de seleccionar personaje
+    seleccionarPersonaje.style.display = 'none'
+
     //hacer condicionales para indicar que personaje fue seleccionado
     //se debe crear un variable de las mascota que el jugador seleccionó
     if(inputsylvanari.checked){

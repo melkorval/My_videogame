@@ -14,5 +14,5 @@
 /*Colocar un borde a nuestro mapa de canvas */
 
 #mapa {
-    
+    border: 2px solid #1AEBC1;
 }
