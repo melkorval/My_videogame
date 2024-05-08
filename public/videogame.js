@@ -78,7 +78,7 @@ class Personaje {
         //tambien definimos las propiedades del mapa
         //para el jugador en canvas
         this.mapaFoto = new Image()
-        this.mapaFoto.src = fotoMapa
+        this.mapaFoto.src = foto
 
     }
 
@@ -188,22 +188,24 @@ function verificarPersonaje(){
     mapaJuego.style.display = 'flex'
        
     //Prueba para ver si se puede colocar en el mapa un personaje
-    let imagenDeSylvanari = new Image()
-    imagenDeSylvanari.src =  sylvanari.foto//colocar la imagen del objeto creado
-
-    lienzo.drawImage(
-        imagenDeSylvanari,//cargar imagen
+    //let imagenDeSylvanari = new Image()
+    //imagenDeSylvanari.src =  sylvanari.foto//colocar la imagen del objeto creado
+    //lo anterior los definimos mejor en la clase de personaje para ser mas general
+    //al aplicar
+    
+    //Este codigo lo definimos en una funcion
+    //lienzo.drawImage(
+        //imagenDeSylvanari,//cargar imagen
         //esto valores son las coordenadas 
         //donde se inicia a pintar el personaje
-        20, //pixeles en x
-        40, //pixeles en y
+        //20, //pixeles en x
+        //40, //pixeles en y
         
         //ahora damos el ancho y el alto para el personaje en 
         //el mapa 
-        50,
-        50
-
-    )
+        //50,
+        //50
+    //)
 
     //hacer condicionales para indicar que personaje fue seleccionado
     //se debe crear un variable de las mascota que el jugador seleccionó
@@ -285,6 +287,35 @@ function pintarCanvas(){
     )*/
 
 //    personajeJugador.pintarPersonaje()
+}
+
+function pintarPersonaje(){
+    //para evitar transposiciones con las antiguas posicion
+    //primero limpiamos el mapa
+    lienzo.clearRect(0, 0, mapa.width, mapa.height)
+
+    lienzo.drawImage(
+        //como ya estan definidos los valores en
+        //la clase personaje entonces accedemos a
+        //los atributos del objeto
+        sylvanari.mapaFoto,//cargar imagen
+        //esto valores son las coordenadas 
+        //donde se inicia a pintar el personaje
+        sylvanari.x, //pixeles en x
+        sylvanari.y, //pixeles en y
+        
+        //ahora damos el ancho y el alto para el personaje en 
+        //el mapa 
+        sylvanari.ancho,
+        sylvanari.alto
+    )
+
+}
+
+//ahora podemos definir la funciones para poder mover el personajes
+function moverArriba(){
+    sylvanari.x = sylvanari.x - 5
+    pintarPersonaje()
 }
 
 window.addEventListener('load', iniciarJuego) //iniciar juego una vez que se haya cargado todo
