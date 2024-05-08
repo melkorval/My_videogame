@@ -63,9 +63,13 @@ class Personaje {
         //definicion de los parametros de posicion y
         //velocidad del personaje
 
-        //posicion aleatoria en en el mapa
-        this.x = mapa.width/3
-        this.y = 2*mapa.height/3
+        //posicion en en el mapa
+        this.x = 20
+        this.y = 30
+
+        //ancho y alto del personaje en el mapa
+        this.ancho = 80
+        this.ancho = 80
 
         //Definicion de la velocidad inicial
         this.velocidadX = 0
@@ -175,13 +179,29 @@ function verPersonajes(){
 
 //funcion para identificar que personaje selecciono el jugador
 function verificarPersonaje(){
-        
+    //ocultar la seleccion de personajes para luego cargar el mapa
+    //canvas
+    seleccionarPersonaje.style.display = 'none'
+
+    //cargar mapa del juego
+    //seccion de mapa
+    mapaJuego.style.display = 'flex'
+       
     //Prueba para ver si se puede colocar en el mapa un personaje
     let imagenDeSylvanari = new Image()
     imagenDeSylvanari.src =  sylvanari.foto//colocar la imagen del objeto creado
 
     lienzo.drawImage(
         imagenDeSylvanari,//cargar imagen
+        //esto valores son las coordenadas 
+        //donde se inicia a pintar el personaje
+        20, //pixeles en x
+        40, //pixeles en y
+        
+        //ahora damos el ancho y el alto para el personaje en 
+        //el mapa 
+        50,
+        50
 
     )
 
@@ -205,13 +225,6 @@ function verificarPersonaje(){
         return //detiene el codigo
     }
 
-    //ocultar la seleccion de personajes para luego cargar el mapa
-    //canvas
-    seleccionarPersonaje.style.display = 'none'
-
-    //cargar mapa del juego
-    //seccion de mapa
-    mapaJuego.style.display = 'flex'
     iniciarMapa()
 
 }
@@ -258,20 +271,20 @@ function pintarCanvas(){
     //eso se hace para que aparezca cada jugador en su 
     //nueva posicion ya que sino se hace esto apareceran las imagenes
     //superpuestas en cada iteracion
-    lienzo.clearRect(0, 0, mapa.width, mapa.height)
+//    lienzo.clearRect(0, 0, mapa.width, mapa.height)
     //es importante definir el ancho y el alto del mapa
 
     //ahora dibujamos la imagen de fondo del
     //mapa en canvas
-    lienzo.drawImage(
+/*    lienzo.drawImage(
         mapaBackground, //imagen de fondo
         0,
         0,
         mapa.width,
         mapa.height
-    )
+    )*/
 
-    personajeJugador.pintarPersonaje()
+//    personajeJugador.pintarPersonaje()
 }
 
 window.addEventListener('load', iniciarJuego) //iniciar juego una vez que se haya cargado todo

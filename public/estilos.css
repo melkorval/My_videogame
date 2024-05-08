@@ -1,3 +1,9 @@
+/*imagen de fondo */
+
+body {
+    background-image: url('https://i.imgur.com/mPIqqC9.png');
+}
+
 /*Personalizacion del mapa en canvas */
 
 #mapaJuego {
@@ -15,4 +21,10 @@
 
 #mapa {
     border: 2px solid #1AEBC1;
+}
+
+img {
+    /*hacer que la imagen ocupe todo el ancho del cuadro en
+     el mapa de canvas*/
+    width: 100%;
 }
