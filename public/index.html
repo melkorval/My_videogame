@@ -51,6 +51,11 @@
  <section id="mapaJuego">
      <h1>Comienza la carrera</h1>
      <canvas id="mapa"> </canvas>
+     <!--Crear botones de movimiento y sus respectivas funciones-->
+     <button ontouchstart="detenerMovimiento()" ontouchend = "moverArriba()">Arriba</button>
+     <button ontouchstart="detenerMovimiento()" ontouchend = "moverIzquierda()">Izquierda</button>
+     <button ontouchstart="detenerMovimiento()" ontouchend = "moverAbajo()">Abajo</button>
+     <button ontouchstart="detenerMovimiento()" ontouchend = "moverDerecha()">Derecha</button>
  </section>
 
  <script src="videogame.js"></script>

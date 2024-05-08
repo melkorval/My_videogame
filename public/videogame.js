@@ -175,9 +175,15 @@ function verPersonajes(){
 
 //funcion para identificar que personaje selecciono el jugador
 function verificarPersonaje(){
+        
+    //Prueba para ver si se puede colocar en el mapa un personaje
+    let imagenDeSylvanari = new Image()
+    imagenDeSylvanari.src =  sylvanari.foto//colocar la imagen del objeto creado
 
-    //ocultar seleccion de seleccionar personaje
-    seleccionarPersonaje.style.display = 'none'
+    lienzo.drawImage(
+        imagenDeSylvanari,//cargar imagen
+
+    )
 
     //hacer condicionales para indicar que personaje fue seleccionado
     //se debe crear un variable de las mascota que el jugador seleccionó
