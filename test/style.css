@@ -1,0 +1,17 @@
+body {
+    background-image: url('https://i.imgur.com/pqgEsgG.png')
+}
+
+#mapaCrear {
+    color: white;
+    display: flex; /*Manejo de elementos de forma flexible */
+    flex-direction: column; /*Eleementos en forma de columna*/
+    align-items: center; /*Todo centrado*/
+    justify-content: center;
+}
+
+/*Agregar un borde a nuestro canvas para ver donde esta */
+
+#mapa {
+    border: 2px solid white;
+}
