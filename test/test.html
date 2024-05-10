@@ -4,7 +4,7 @@
 
     <head>
         <meta charset="UTF-8" />
-        <title>Crear canvas </title>
+        <title>Crear canvas</title>
         <link rel="stylesheet" href="style.css">
         <meta name="viewport" content="width=device-width, initial-scale=0.1">
     </head>
@@ -16,8 +16,16 @@
             <h1 class="titulo">Mapa</h1>
             
             <canvas id="mapa"></canvas>
-
-            <button onclick="Mover()">Mover</button>
+            <!--Como en los videojuegos se mantiene presionado un boton se 
+            sigua realizando la accion entonces usamos la propiedad onmousedown 
+            cuando se mantenga presionado este sigua moviendose y necesitamos 
+            definir una velocidad dada para que cuando se mantenga presionado tenga
+            tal velocidad y cuando se deje de presionar el movimiento de detenga-->
+            <button onmouseup = "detenerMovimiento()"  onmousedown="arriba()" class = "botonMover">Arriba</button>
+            <button onmouseup = "detenerMovimiento()" onmousedown="abajo()" class = "botonMover">Abajo</button>
+            <button onmouseup = "detenerMovimiento()" onmousedown="derecha()" class = "botonMover">Derecha</button>
+            <button onmouseup = "detenerMovimiento()" onmousedown="izquierda()" class = "botonMover">Izquierda</button>
+            <!--cuando se haga click al boton ejecutar la funcion Mover -->
 
         </section>
     <!--IMPORTANTE PRIMERO CARGAR EL SCRIPT -->

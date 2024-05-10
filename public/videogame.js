@@ -82,16 +82,16 @@ class Personaje {
 
     }
 
-    pintarPersonaje() {
+    //pintarPersonaje() {
         //este metodo permita ver al personaje y asignarle una posicion inicial
-        lienzo.drawImage(
-         this.mapaFoto,
-         this.x,
-         this.y,
-         this.ancho,
-         this.alto
-        )
-    }
+        //lienzo.drawImage(
+         //this.mapaFoto,
+         //this.x,
+         //this.y,
+         //this.ancho,
+         //this.alto
+        //)
+    //}
 }
 
 //creacion de los personajes como objetos
@@ -308,13 +308,16 @@ function pintarPersonaje(){
         //el mapa 
         sylvanari.ancho,
         sylvanari.alto
+
     )
 
+    console.log("Funciona")
 }
 
 //ahora podemos definir la funciones para poder mover el personajes
-function moverArriba(){
-    sylvanari.x = sylvanari.x - 5
+function mover(){
+    console.log("Funciona")
+    sylvanari.x = sylvanari.x + 5
     pintarPersonaje()
 }
 
