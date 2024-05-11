@@ -8,6 +8,13 @@ let dibujo = mapaCanvas.getContext("2d");
 //crear un intervalo de ejecucion de nuestro personaje
 let intervalo_ejecucion; 
 
+//creamos un variable para nuestro fondo del canvas
+//es importante usar el evento onload para asegurar
+//que nuestra imagen este cargada
+
+let fondo_mapa = new Image();
+fondo_mapa.src = 'https://i.imgur.com/pdIMi1i.png';
+
 //debemos crear una clase para generalizar el codigo y 
 //poder colocar coordenadas al personaje creado
 class Personaje {
@@ -53,6 +60,15 @@ function iniciarCanvas(){
     //let imagen_rect = new Image(); //Crear objeto imagen
     
     //imagen_rect.src = sylvarani.foto;
+
+    //ahora vamos a crear la forma de mover nuestro personaje con las teclas
+    //escuchar el evento cuando se presionado una tecla
+    window.addEventListener('keydown', tecla_pres); //una vez que 
+    //se presione una tecla se ejecuta la funcion se presiono una tecla
+
+    //luego escuchar el evento cuando no se presiona una tecla entonces detener 
+    //movimiento
+    window.addEventListener('keyup', detenerMovimiento)
 }
 
 function pintar_intervalo(){
@@ -63,7 +79,11 @@ function pintar_intervalo(){
 
 function PintarPersonaje(){ //para esta funcion debemos
     //crear un intervalo de tiempo para su ejecucion
-    
+  
+    //cambiar dimensiones de nuestro mapa en canvas
+    mapa.width = 800;
+    mapa.height = 500;
+
     //definicion de la velocidad el personaje
     //antes de dibujarlo en el canvas
     sylvarani.x = sylvarani.x + sylvarani.velocidadX;
@@ -73,6 +93,15 @@ function PintarPersonaje(){ //para esta funcion debemos
     //ya que si no se hace esto hacer un efecto de imagen arrastrada
     //cada vez que se mueve
     dibujo.clearRect(0, 0, mapaCanvas.width, mapaCanvas.height);
+
+    //pintar imagen de fondo del mapa
+    dibujo.drawImage(
+        fondo_mapa,
+        0,
+        0,
+        mapa.width,
+        mapa.height
+    );
 
     dibujo.drawImage(
     sylvarani.imagen_rect,
@@ -113,5 +142,40 @@ function detenerMovimiento(){
     sylvarani.velocidadY = 0;
 }
 
+//crear funciones para los eventos de presionado de una 
+//tecla
+
+//si puedo con esto programar un keylogger
+function tecla_pres(event){
+    //la funcion devuelve un evento
+    //console.log(event.key); //revisar el evento que se 
+    //ejecuto, no da el nombre de la tecla
+    switch(event.key){ 
+    //varios condicionales
+        case 'ArrowUp'://tecla hacia arriba
+            //ejecutar la funcion mover arriba
+            arriba();
+            break;
+       
+        case 'ArrowDown':
+            abajo();
+            break;
+
+        case 'ArrowRight':
+            derecha();
+            break;
+        
+        case 'ArrowLeft':
+            izquierda();
+            break;
+
+        default:
+            break;
+
+    }
+}
+
 //Muy importante cargar todo antes de dibujar
+//window es un objeto que permita acceder a todo 
+//el contexto de la ventana del navegador
 window.addEventListener('load', iniciarCanvas);
