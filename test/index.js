@@ -25,20 +25,52 @@ con este framework
 
 
 //Una vez instalado express los llamamos
-const express = require("express")
+const express = require("express");
 //importar el modulo de express
 
 //creacion de la aplicacion que en este caso es el servidor
-const app = express()
+const app = express();
 //definimos una nueva instancia de express que es nuestra aplicacion 
 //o servidor
+
+//lista de jugadores 
+const jugadores = [];
+
+//crear un clase para el jugador y poder guardar su informacion
+
+class Personaje {
+    constructor(id){ //dentro de la clase esta el parametro id.
+        this.id = id;
+    }
+}
 
 //creamos un simple solicitud get donde el usuario pida un recurso y se le de una 
 //respuesta
 
-app.get("/", (req, res) => { //req es el objeto que contiene la informacion de la solicitud realizada
+//app.get("/", (req, res) => { //req es el objeto que contiene la informacion de la solicitud realizada
     //y res es el objeto de respuesta
-    res.send("Hola")
+  //  res.send("Hola");
+//})
+
+//vamos a crear una solicitud para hacer que cada vez que un jugador se conecta al Servidor se 
+//añada este juegador a un lista de jugadores.
+
+//crea solicitud cuando el jugador se una entonces añadir a la lista.
+app.get("/unirse", (req, res) => { //para probar esta solicitud ir a la url
+    //http://localhost:8080/unirse aqui se hace la solicitud GET al Servidor
+    //y este le da un id al jugador y lo añade a un lista de jugadores.
+
+    //crear id del jugador con un numero aleotorio
+    const id = `${Math.random()}`
+
+    //creamos el objeto de jugador para anadirlo a la 
+    //lista con su respectivo jugador.
+    const jugador = new Personaje(id);
+
+    //agregar a la lista de jugadores
+    jugadores.push(jugador);
+
+    res.send(id) //responder con el id del jugador
 })
 
 //como es un Servidor locar ejecutamos: http://localhost:8080/ en nuetro 
@@ -46,7 +78,7 @@ app.get("/", (req, res) => { //req es el objeto que contiene la informacion de l
 
 //escuchar la peticiones de los clientes
 app.listen(8080, () => {
-    console.log("Servidor funcionando")
+    console.log("Servidor funcionando");
 })
 //En este codigo escucha los eventos por el puerto 8080 y ejecuta una funcion callback que
 //solo imprime en terminal "servidor funcionando" para indicar que el servidor funciona
