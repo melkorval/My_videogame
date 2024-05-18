@@ -69,6 +69,33 @@ function iniciarCanvas(){
     //luego escuchar el evento cuando no se presiona una tecla entonces detener 
     //movimiento
     window.addEventListener('keyup', detenerMovimiento)
+
+    //crear un funcion para enviar al servidor que un nuevo jugador se a unido
+    unirse_juego();
+}
+
+//fetch permite hacer solicitud http GET a la url proporcionada que son 
+//asincronas, ya que el servidor se puede tardar en responder por lo cual
+//se usa el metodo then para que cuando se obtenga un respuesta del servidor entonces
+//imprimir esta respuesta para indicar que el servidor respondio.
+function unirse_juego(){
+    //aqui se hace un peticion fetch para realizar solicitud al servidor.
+    //es un funcion asincrona por lo cual usamos then
+    fetch("http://localhost:8080/unirse")
+        .then(function (res) {//se ejecuta un callback
+        //console.log(res); //imprimir la respuesta del servidor en terminal.
+
+        //verificar que la respuesta del Servidor fue existosa
+        if(res.ok){ //si res.ok es true la respuesta es existosa
+            res.text()//leer el cuerpo de la respuesta como texto.
+                .then(function (respuesta) {
+                    console.log(respuesta); //imprimir respuesta en consola.
+                })
+        }
+    })
+
+    //importante: Encender el servidor para ver los resultados !!!!
+            
 }
 
 function pintar_intervalo(){

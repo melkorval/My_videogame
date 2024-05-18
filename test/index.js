@@ -70,8 +70,18 @@ app.get("/unirse", (req, res) => { //para probar esta solicitud ir a la url
     //agregar a la lista de jugadores
     jugadores.push(jugador);
 
+    //Es necesario indicar al servidor que permitimos que nuestro test.js
+    //pueda hacer solicitudes a este.
+
+    res.setHeader("Access-Control-Allow-Origin", "*"); 
+    //habilitar que cualquier origen realize una solicitud aunque
+    //en la realidad esto es inseguro y debe existir un sitio que tenga
+    //permisos para realizar solicitudes.
+
     res.send(id) //responder con el id del jugador
 })
+//despues es necesario crear un funcion en frontend (test.js) para 
+//enviar la solicitud al Servidor.
 
 //como es un Servidor locar ejecutamos: http://localhost:8080/ en nuetro 
 //navgador y obtenemos la respuesta de nuestro Servidor el mensaje "Hola"
