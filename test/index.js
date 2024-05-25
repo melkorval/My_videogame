@@ -21,6 +21,23 @@ Ahora instalamos express js para poder crear un sitio web
 con este framework
 
 -npm install express
+
+JSON - Javascript Object Notation
+Es un archivo para transmitir informacion entre el cliente y 
+servidor y es facil de escribir y de leer tanto para humanos
+como para maquinas.
+
+Este clase de archivo esta compuesto por una coleccion de
+clave/valor que van en parejas de la siguiente manera
+
+{
+
+name : "Melkor",
+age : 30,
+
+}
+
+
 */
 
 
@@ -28,10 +45,23 @@ con este framework
 const express = require("express");
 //importar el modulo de express
 
+//como necesitamos que se pueda enviar solicitudes desde el frontend
+//entonces usamos la libreria cors
+//npm install cors 
+const cors = require("cors")
+
 //creacion de la aplicacion que en este caso es el servidor
 const app = express();
 //definimos una nueva instancia de express que es nuestra aplicacion 
 //o servidor
+
+//ahora usamos la libreria cors para poder hacer solicitudes al Servidor
+app.use(cors());
+
+//ahora vamos a decirle a backend que vamos a utilizar un archivo JSON para 
+//transmitir la informacion.
+app.use(express.json()); //hacer que las solicitudes post sean usando
+//un formato de datos JSON para enviar estas solicitudes.
 
 //lista de jugadores 
 const jugadores = [];
@@ -73,13 +103,29 @@ app.get("/unirse", (req, res) => { //para probar esta solicitud ir a la url
     //Es necesario indicar al servidor que permitimos que nuestro test.js
     //pueda hacer solicitudes a este.
 
-    res.setHeader("Access-Control-Allow-Origin", "*"); 
+    //ya no se usa ya que usaremos la libreria cors
+    //res.setHeader("Access-Control-Allow-Origin", "*"); 
     //habilitar que cualquier origen realize una solicitud aunque
     //en la realidad esto es inseguro y debe existir un sitio que tenga
     //permisos para realizar solicitudes.
 
     res.send(id) //responder con el id del jugador
 })
+
+
+//crear la solicitud POST para recibir el JSON con la informacion del jugador.
+
+app.post("/personaje/jugadorId", (res, res) => {
+    //extraer de la solicitud POST el id del 
+    //jugador
+    const jugadorId = req.params.jugadorId || ""; //en caso que la variable
+    //jugadorId no exista entonces solo dar un string vacio.
+
+    console.log(jugadores);//lista de jugadores
+    console.log(jugadorId);
+    res.end();
+})
+
 //despues es necesario crear un funcion en frontend (test.js) para 
 //enviar la solicitud al Servidor.
 
