@@ -15,6 +15,10 @@ let intervalo_ejecucion;
 let fondo_mapa = new Image();
 fondo_mapa.src = 'https://i.imgur.com/pdIMi1i.png';
 
+// se crea un variable de nuestro personaje para poder enviarlo al 
+// backend 
+let personajeJugador
+
 //debemos crear una clase para generalizar el codigo y 
 //poder colocar coordenadas al personaje creado
 class Personaje {
@@ -72,6 +76,13 @@ function iniciarCanvas(){
 
     //crear un funcion para enviar al servidor que un nuevo jugador se a unido
     unirse_juego();
+
+    //indicar personaje seleccionado utilizar botones y crear mas personajes 
+    //para hacer esto.
+    personajeJugador = sylvarani.id;
+
+    //ahora debemos crear la funcion fetch
+    seleccionarPersonaje(personajeJugador);
 }
 
 //fetch permite hacer solicitud http GET a la url proporcionada que son 
