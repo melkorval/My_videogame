@@ -17,7 +17,10 @@ fondo_mapa.src = 'https://i.imgur.com/pdIMi1i.png';
 
 // se crea un variable de nuestro personaje para poder enviarlo al 
 // backend 
-let personajeJugador
+let personajeJugador;
+
+//crear variable de jugador id
+let jugadorId = null;
 
 //debemos crear una clase para generalizar el codigo y 
 //poder colocar coordenadas al personaje creado
@@ -31,6 +34,10 @@ class Personaje {
         this.alto = alto;
         this.imagen_rect = new Image();
         this.imagen_rect.src = foto;
+        
+        //id del jugador
+        this.id = id;
+
         //es importante tener la imagen totalmente cargada
         //para utilizarla por esto se usa el evento onload
         this.imagen_rect.onload = () => {
@@ -76,6 +83,7 @@ function iniciarCanvas(){
 
     //crear un funcion para enviar al servidor que un nuevo jugador se a unido
     unirse_juego();
+    //esta funcion retorna el id del jugador
 
     //indicar personaje seleccionado utilizar botones y crear mas personajes 
     //para hacer esto.
@@ -98,15 +106,39 @@ function unirse_juego(){
 
         //verificar que la respuesta del Servidor fue existosa
         if(res.ok){ //si res.ok es true la respuesta es existosa
-            res.text()//leer el cuerpo de la respuesta como texto.
+            res.text()//leer el cuerpo de la respuesta como texto.
                 .then(function (respuesta) {
                     console.log(respuesta); //imprimir respuesta en consola.
+                    //como la respuesta es el jugador id entonce la jugardamos en una
+                    //variable 
+                    personajeId = respuesta;
                 })
         }
     })
 
     //importante: Encender el servidor para ver los resultados !!!!
             
+}
+
+function seleccionarPersonaje(personajeJugador){
+    //ahora realizamos el envio del id del jugador al
+    //servidor para indicar cual personaje se seleciono por
+    //medio del id
+    fetch(`http://localhost:8080/mokepon/${personajeId}`, {
+            method: "post",
+            //ahora debemos indicar que tipo de archivo vamos a 
+            //enviar. 
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            
+            //convertir el JSON a texto
+            body: JSON.stringify({
+                personaje: personajeJugador;
+            })    
+
+        } 
+        )
 }
 
 function pintar_intervalo(){
