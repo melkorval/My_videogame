@@ -48,6 +48,12 @@ class Personaje {
            //este cargada para luego que aparezca en el canvas para 
            //asegurar que esto ocurra se usa el evento onload.
 
+           //las funciones deben ir aqui para cargar las imagenes
+           //antes de ejecutarse
+           unirse_juego();
+           seleccionarPersonaje(personajeJugador);
+
+
         }
 
         //agregamos velocidad al nuestro personaje asi que cuando se 
@@ -87,6 +93,11 @@ function iniciarCanvas(){
 
     //indicar personaje seleccionado utilizar botones y crear mas personajes 
     //para hacer esto.
+    //ya que el id es dado por el servidor y luego lo enviamos
+    //al servidor para su identificacion
+
+    sylvarani.id = personajeId;
+
     personajeJugador = sylvarani.id;
 
     //ahora debemos crear la funcion fetch
@@ -106,7 +117,7 @@ function unirse_juego(){
 
         //verificar que la respuesta del Servidor fue existosa
         if(res.ok){ //si res.ok es true la respuesta es existosa
-            res.text()//leer el cuerpo de la respuesta como texto.
+            res.text()//leer el cuerpo de la respuesta como texto.
                 .then(function (respuesta) {
                     console.log(respuesta); //imprimir respuesta en consola.
                     //como la respuesta es el jugador id entonce la jugardamos en una
@@ -120,6 +131,8 @@ function unirse_juego(){
             
 }
 
+//Solucionar problema: no carga la imagenes del canvas al hacer la
+//solicitud post.
 function seleccionarPersonaje(personajeJugador){
     //ahora realizamos el envio del id del jugador al
     //servidor para indicar cual personaje se seleciono por
@@ -134,7 +147,7 @@ function seleccionarPersonaje(personajeJugador){
             
             //convertir el JSON a texto
             body: JSON.stringify({
-                personaje: personajeJugador;
+                personaje: personajeJugador
             })    
 
         } 
